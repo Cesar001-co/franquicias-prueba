@@ -55,7 +55,8 @@ public class ProductoService {
                         p.getIdProducto(),
                         p.getNombre(),
                         p.getStock(),
-                        p.getSucursal().getNombre()
+                        p.getSucursal().getNombre(),
+                        p.getSucursal().getIdSucursal()
                 ))
                 .collect(Collectors.toList());
     }

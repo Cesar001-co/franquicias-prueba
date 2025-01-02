@@ -5,12 +5,14 @@ public class ProductoConSucursalDTO {
     private String nombre;
     private Integer stock;
     private String nombreSucursal;
+    private Long sucursal_id;
 
-    public ProductoConSucursalDTO(Long idProducto, String nombre, Integer stock, String nombreSucursal) {
+    public ProductoConSucursalDTO(Long idProducto, String nombre, Integer stock, String nombreSucursal, Long sucursal_id) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.stock = stock;
         this.nombreSucursal = nombreSucursal;
+        this.sucursal_id = sucursal_id;
     }
 
     public Long getIdProducto() {
@@ -43,5 +45,13 @@ public class ProductoConSucursalDTO {
 
     public void setNombreSucursal(String nombreSucursal) {
         this.nombreSucursal = nombreSucursal;
+    }
+
+    public Long getSucursal_id() {
+        return sucursal_id;
+    }
+
+    public void setSucursal_id(Long sucursal_id) {
+        this.sucursal_id = sucursal_id;
     }
 }
