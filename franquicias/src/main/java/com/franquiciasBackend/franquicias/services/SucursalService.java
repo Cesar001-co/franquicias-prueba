@@ -34,4 +34,14 @@ public class SucursalService {
         sucursal.getProductos().add(producto);
         return productoRepo.save(producto);
     }
+
+    // Plus: Actualizar el nombre de una sucursal
+    public Sucursal actualizarNombreSucursal(Long sucursalId, String nuevoNombre) {
+        // verificar si sucursal existe
+        Sucursal sucursal = sucursalRepo.findById(sucursalId)
+                .orElseThrow(() -> new RuntimeException("Sucursal no encontrada"));
+        sucursal.setNombre(nuevoNombre);
+
+        return sucursalRepo.save(sucursal);
+    }
 }

@@ -1,5 +1,6 @@
 package com.franquiciasBackend.franquicias.entitys;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -26,7 +27,7 @@ public class Sucursal {
 
     // Campo que identifica la llave foránea de la tabla productos
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursal")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Producto> productos;
 
     public Sucursal(Long idSucursal, String nombre, Franquicia franquicia, List<Producto> productos) {

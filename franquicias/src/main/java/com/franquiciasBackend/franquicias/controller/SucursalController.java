@@ -2,7 +2,9 @@ package com.franquiciasBackend.franquicias.controller;
 
 import com.franquiciasBackend.franquicias.DTO.ProductoDTO;
 import com.franquiciasBackend.franquicias.DTO.StockDTO;
+import com.franquiciasBackend.franquicias.DTO.SucursalDTO;
 import com.franquiciasBackend.franquicias.entitys.Producto;
+import com.franquiciasBackend.franquicias.entitys.Sucursal;
 import com.franquiciasBackend.franquicias.services.ProductoService;
 import com.franquiciasBackend.franquicias.services.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +36,10 @@ public class SucursalController {
     @PutMapping("/productos/{id}/stock")
     public ResponseEntity<Producto> modificarStockProducto(@PathVariable Long id, @RequestBody StockDTO stockDTO) {
         return ResponseEntity.status(HttpStatus.OK).body(productoService.modificarStockProducto(id, stockDTO));
+    }
+
+    @PutMapping("/{id}/nombre")
+    public ResponseEntity<Sucursal> actualizarNombreSucursal(@PathVariable Long id, @RequestBody SucursalDTO sucursalDTO) {
+        return ResponseEntity.ok(sucursalService.actualizarNombreSucursal(id, sucursalDTO.getNombre()));
     }
 }

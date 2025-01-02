@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,5 +60,16 @@ public class ProductoService {
                         p.getSucursal().getIdSucursal()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    // Plus: Actualizar nombre producto
+    public Producto actualizarNombreProducto(Long productoId, String nuevoNombre) {
+        // verificar si producto existe
+        Producto producto = productoRepo.findById(productoId)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        String nombre = nuevoNombre.toUpperCase(Locale.ROOT);
+        producto.setNombre(nombre);
+
+        return productoRepo.save(producto);
     }
 }
