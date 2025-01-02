@@ -1,5 +1,6 @@
 package com.franquiciasBackend.franquicias.services;
 
+import com.franquiciasBackend.franquicias.DTO.StockDTO;
 import com.franquiciasBackend.franquicias.entitys.Producto;
 import com.franquiciasBackend.franquicias.repository.ProductoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,14 @@ public class ProductoService {
             throw new RuntimeException("El producto no pertenece a la sucursal especificada");
         }
         productoRepo.delete(producto);
+    }
+
+    // 6. Modificar el stock de un producto
+    public Producto modificarStockProducto(Long productoId, StockDTO stockDTO) {
+        // validar si producto existe
+        Producto producto = productoRepo.findById(productoId)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        producto.setStock(stockDTO.getNuevoStock());
+        return productoRepo.save(producto);
     }
 }
