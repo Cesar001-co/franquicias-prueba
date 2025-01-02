@@ -15,6 +15,7 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
+    // Plus: Actualizar nombre producto
     @PutMapping("/{id}/nombre")
     public ResponseEntity<Producto> actualizarNombreProducto(@PathVariable Long id, @RequestBody NombreDTO nombreDTO) {
         return ResponseEntity.status(HttpStatus.OK).body(productoService.actualizarNombreProducto(id, nombreDTO.getNuevoNombre()));

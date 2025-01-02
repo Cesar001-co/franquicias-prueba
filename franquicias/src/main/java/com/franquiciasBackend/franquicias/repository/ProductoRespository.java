@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ProductoRespository extends JpaRepository<Producto, Long> {
 
-    // Producto que más stock tiene por sucursal para una franquicia
+    // Busqueda personalizada: Obtener producto que más stock tiene por sucursal para una franquicia
     @Query("SELECT p " +
             "FROM Producto p " +
             "WHERE p.stock = ( " +
