@@ -67,8 +67,7 @@ public class ProductoService {
         // verificar si producto existe
         Producto producto = productoRepo.findById(productoId)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
-        String nombre = nuevoNombre.toUpperCase(Locale.ROOT);
-        producto.setNombre(nombre);
+        producto.setNombre(nuevoNombre);
 
         return productoRepo.save(producto);
     }

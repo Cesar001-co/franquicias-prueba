@@ -1,0 +1,25 @@
+FROM openjdk:20-jdk
+
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copy the application code
+COPY . .
+
+# Build the aplication
+RUN ./mvnw clean package -DskipTests
+
+# Run the aplication
+FROM openjdk:20-jdk
+
+# Set working directory
+WORKDIR /app
+
+# Copiar el archivo JAR generado por tu proyecto al contenedor
+COPY --from=builder /app/target/*.jar app.jar
+
+# Exponer el puerto en el que corre la aplicación
+EXPOSE 8080
+
+# Comando para ejecutar la aplicación
+ENTRYPOINT ["java", "-jar", "app.jar"]
