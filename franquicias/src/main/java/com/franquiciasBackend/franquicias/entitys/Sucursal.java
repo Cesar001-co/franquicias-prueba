@@ -2,9 +2,11 @@ package com.franquiciasBackend.franquicias.entitys;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "sucursales")
-public class SucursalEntity {
+public class Sucursal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sucursal")
@@ -13,10 +15,10 @@ public class SucursalEntity {
     @Column(nullable = false)
     private String nombre;
 
-//    @ManyToOne
-//    @JoinColumn(name = "franquicia_id", nullable = false)
-//    private Franquicia franquicia;
+    @ManyToOne
+    @JoinColumn(name = "franquicia_id", nullable = false)
+    private Franquicia franquicia;
 
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "sucursal")
-//    private List<Producto> productos;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "sucursal")
+    private List<Producto> productos;
 }
