@@ -1,5 +1,6 @@
 package com.franquiciasBackend.franquicias.entitys;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,12 +17,16 @@ public class Franquicia {
     private String nombre;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "franquicia")
+    @JsonBackReference
     private List<Sucursal> sucursales;
 
     public Franquicia(long idFranquicia, String nombre, List<Sucursal> sucursales) {
         this.idFranquicia = idFranquicia;
         this.nombre = nombre;
         this.sucursales = sucursales;
+    }
+
+    public Franquicia() {
     }
 
     public long getIdFranquicia() {

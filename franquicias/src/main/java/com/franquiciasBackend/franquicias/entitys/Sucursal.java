@@ -1,5 +1,6 @@
 package com.franquiciasBackend.franquicias.entitys;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -7,19 +8,25 @@ import java.util.List;
 @Entity
 @Table(name = "sucursales")
 public class Sucursal {
+
+    // Id de la tabla sucursales
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sucursal")
     private Long idSucursal;
 
+    // Campo que identifica el nombre de la sucursal
     @Column(nullable = false)
     private String nombre;
 
+    // Campo que identifica la llave foránea de la tabla franquicias
     @ManyToOne
     @JoinColumn(name = "franquicia_id", nullable = false)
     private Franquicia franquicia;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "sucursal")
+    // Campo que identifica la llave foránea de la tabla productos
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursal")
+    @JsonManagedReference
     private List<Producto> productos;
 
     public Sucursal(Long idSucursal, String nombre, Franquicia franquicia, List<Producto> productos) {
@@ -27,6 +34,9 @@ public class Sucursal {
         this.nombre = nombre;
         this.franquicia = franquicia;
         this.productos = productos;
+    }
+
+    public Sucursal() {
     }
 
     public Long getIdSucursal() {

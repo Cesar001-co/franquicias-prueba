@@ -1,5 +1,6 @@
 package com.franquiciasBackend.franquicias.entitys;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,9 +21,10 @@ public class Producto {
     @Column(nullable = false)
     private int stock;
 
-    //Campo que identifica la llave foranea de la tabla sucursales
+    //Campo que identifica la llave foránea de la tabla sucursales
     @ManyToOne
     @JoinColumn(name = "sucursal_id", nullable = false)
+    @JsonBackReference
     private Sucursal sucursal;
 
     public Producto(Long idProducto, String nombre, int stock, Sucursal sucursal) {
@@ -30,6 +32,9 @@ public class Producto {
         this.nombre = nombre;
         this.stock = stock;
         this.sucursal = sucursal;
+    }
+
+    public Producto() {
     }
 
     public Long getIdProducto() {
