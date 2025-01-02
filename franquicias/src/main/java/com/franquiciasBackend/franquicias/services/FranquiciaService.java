@@ -1,8 +1,10 @@
 package com.franquiciasBackend.franquicias.services;
 
 import com.franquiciasBackend.franquicias.DTO.FranquiciaDTO;
+import com.franquiciasBackend.franquicias.DTO.ProductoDTO;
 import com.franquiciasBackend.franquicias.DTO.SucursalDTO;
 import com.franquiciasBackend.franquicias.entitys.Franquicia;
+import com.franquiciasBackend.franquicias.entitys.Producto;
 import com.franquiciasBackend.franquicias.entitys.Sucursal;
 import com.franquiciasBackend.franquicias.repository.FranquiciaRepository;
 import com.franquiciasBackend.franquicias.repository.SucursalRespository;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class FranquiciaService {
