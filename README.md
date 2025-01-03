@@ -14,7 +14,7 @@ Este proyecto es una API REST desarrollada con **Spring Boot** para gestionar fr
 
 ---
 
-## ** Acceso**
+## **Acceso**
 
 La aplicación estará disponible en la nuve en railway usando los endpoints para la ruta:
 
