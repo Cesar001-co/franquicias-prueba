@@ -14,9 +14,30 @@ Este proyecto es una API REST desarrollada con **Spring Boot** para gestionar fr
 
 ---
 
+## ** Acceso**
+
+La aplicación estará disponible en la nuve en railway usando los endpoints para la ruta:
+
+```plaintext
+https://abundant-imagination-production.up.railway.app/
+```
+
+O usando la documentacion en Swagger:
+
+https://abundant-imagination-production.up.railway.app/swagger-ui/index.html#/
+
+
 ## **Configuración de la Base de Datos MySQL**
 
-### **1. Crear la base de datos**
+### **1. Base de datos MYSQL AWS**
+
+La base de datos mySQL se encuentra en un servicio de AWS:
+
+```
+ruta = "franquicias-db.crcmek2yaec6.us-east-2.rds.amazonaws.com:3306/franquicias_db"
+```
+
+### **2. Crear la base de datos local**
 
 Ejecuta el siguiente comando para crear la base de datos en tu servidor MySQL:
 
@@ -33,6 +54,15 @@ server.port = 8080
 spring.datasource.url=jdbc:mysql://localhost:3306/franquicias_db
 spring.datasource.username=root
 spring.datasource.password={configurada por el usuario}
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+o suar el acceso de a la base de datos en AWS
+```properties
+server.port = 8080
+spring.datasource.url=jdbc:mysql://franquicias-db.crcmek2yaec6.us-east-2.rds.amazonaws.com:3306/franquicias_db
+spring.datasource.username=root
+spring.datasource.password=root1234
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
