@@ -65,6 +65,12 @@ La aplicación estará disponible en:
 http://localhost:8080
 ```
 
+La documentacion en Swagger tambien estará disponible en:
+
+```plaintext
+ttp://localhost:8080/swagger-ui/index.html#/
+```
+
 ---
 
 ## **Documentación de Endpoints**
