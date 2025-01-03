@@ -190,7 +190,7 @@ ttp://localhost:8080/swagger-ui/index.html#/
 
 ---
 
-### **7. Consultar el producto con mayor stock por sucursal**
+### **7. Consulta productos con más stock por sucursal para una franquicia**
 **Método:** `GET`  
 **URL:** `/franquicias/{id}/mayor-stock`  
 
