@@ -82,9 +82,8 @@ http://localhost:8080
 **Respuesta esperada:**
 ```json
 {
-  "idFranquicia": 1,
-  "nombre": "Franquicia ABC",
-  "sucursales": []
+    "idFranquicia": 1,
+    "nombre": "franquicia ABC"
 }
 ```
 
@@ -103,9 +102,12 @@ http://localhost:8080
 **Respuesta esperada:**
 ```json
 {
-  "idSucursal": 1,
-  "nombre": "Sucursal Norte",
-  "productos": []
+    "idSucursal": 2,
+    "nombre": "Franquicia ABC SUR",
+    "franquicia": {
+        "idFranquicia": 1,
+        "nombre": "franquicia abc"
+    }
 }
 ```
 
@@ -156,7 +158,7 @@ http://localhost:8080
 
 ### **5. Eliminar un producto de una sucursal**
 **Método:** `DELETE`  
-**URL:** `/productos/{id}`  
+**URL:** `sucursales/{idSucursal}/productos/{idProducto}`  
 
 **Respuesta esperada:**
 ```json
@@ -167,35 +169,97 @@ http://localhost:8080
 
 ---
 
-### **6. Consultar el producto con mayor stock por sucursal**
+### **6. Modificar Stock de un producto**
+**Método:** `PUT`  
+**URL:** `/productos/{id}/stock`  
+
+**Respuesta esperada:**
+```json
+{
+    "idProducto": 2,
+    "nombre": "arroz huila",
+    "stock": 30
+}
+```
+
+---
+
+### **7. Consultar el producto con mayor stock por sucursal**
 **Método:** `GET`  
-**URL:** `/franquicias/{id}/productos/mayor-stock`  
+**URL:** `/franquicias/{id}/mayor-stock`  
 
 **Respuesta esperada:**
 ```json
 [
-  {
-    "idProducto": 1,
-    "nombre": "Producto A",
-    "stock": 100,
-    "sucursal": "Sucursal Norte"
-  }
+    {
+        "idProducto": 8,
+        "nombre": "arroz casa",
+        "stock": 30,
+        "nombreSucursal": "FRANQUISIA LUKE CENTRO",
+        "sucursal_id": 1
+    },
+    {
+        "idProducto": 9,
+        "nombre": "arroz casa",
+        "stock": 16,
+        "nombreSucursal": "Franquicia ABC NORTE",
+        "sucursal_id": 2
+    },
+    {
+        "idProducto": 10,
+        "nombre": "arroz casa",
+        "stock": 17,
+        "nombreSucursal": "Franquicia ABC SUR",
+        "sucursal_id": 3
+    }
 ]
 ```
 
 ---
 
-## **Contribución**
+### **8. (PLUS) Modificar nombre franquicia**
+**Método:** `PUT`  
+**URL:** `/franquicias/{id}/nombre`  
 
-Si deseas contribuir:
-1. Haz un fork del repositorio.
-2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza tus cambios y haz commit (`git commit -m "Agregar nueva funcionalidad"`).
-4. Envía un pull request.
+**Respuesta esperada:**
+```json
+{
+    "idFranquicia": 1,
+    "nombre": "franquicia abc"
+}
+```
 
 ---
 
-## **Licencia**
+### **9. (PLUS) Modificar nombre sucursal**
+**Método:** `PUT`  
+**URL:** `/sucursales/{id}/nombre`  
 
-Este proyecto está licenciado bajo [tu tipo de licencia, e.g., MIT, Apache 2.0].
+**Respuesta esperada:**
+```json
+{
+    "idSucursal": 1,
+    "nombre": "franquicia abc",
+    "franquicia": {
+        "idFranquicia": 1,
+        "nombre": "FRANQUISIA LUKE NORTE"
+    }
+}
+```
 
+---
+
+### **10. (PLUS) Modificar nombre producto**
+**Método:** `PUT`  
+**URL:** `/productos/{id}/nombre`  
+
+**Respuesta esperada:**
+```json
+{
+    "idProducto": 11,
+    "nombre": "Jabon",
+    "stock": 2
+}
+```
+
+---
