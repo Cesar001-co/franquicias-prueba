@@ -1,5 +1,6 @@
 # Etapa 1: Construcción
-FROM openjdk:20-jdk AS builder
+#FROM openjdk:20-jdk AS builder
+FROM maven:3.9.4-eclipse-temurin-20 AS builder
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
