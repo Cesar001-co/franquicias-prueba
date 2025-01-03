@@ -8,8 +8,8 @@ Este proyecto es una API REST desarrollada con **Spring Boot** para gestionar fr
 
 ### Software necesario:
 - Java 17 o superior
+- Open jdk 20
 - Maven 3.6+
-- Docker (opcional)
 - MySQL
 
 ---
