@@ -12,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/sucursales")
 public class SucursalController {
@@ -30,9 +33,12 @@ public class SucursalController {
 
     // 5. Eliminar un producto de una sucursal
     @DeleteMapping("/{id}/productos/{idProducto}")
-    public ResponseEntity<Void> eliminarProducto(@PathVariable Long id, @PathVariable Long idProducto) {
+    public ResponseEntity<Map<String, String>> eliminarProducto(@PathVariable Long id, @PathVariable Long idProducto) {
         productoService.eliminarProducto(id, idProducto);
-        return ResponseEntity.noContent().build();
+        //mensaje respuesta
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Producto eliminado exitosamente");
+        return ResponseEntity.ok(response);
     }
 
     // 6. Modificar el stock de un producto

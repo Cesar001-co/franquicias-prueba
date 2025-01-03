@@ -49,6 +49,6 @@ public class FranquiciaController {
     // Plus: Actualizar en nombre de la franquicia
     @PutMapping("/{id}/nombre")
     public ResponseEntity<Franquicia> actualizarNombreFranquicia(@PathVariable Long id, @RequestBody FranquiciaDTO franquiciaDTO) {
-        return ResponseEntity.ok(franquiciaService.actualizarNombreFranquicia(id, franquiciaDTO.getNombre()));
+        return ResponseEntity.status(HttpStatus.OK).body(franquiciaService.actualizarNombreFranquicia(id, franquiciaDTO.getNombre()));
     }
 }

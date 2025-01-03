@@ -29,10 +29,12 @@ CREATE DATABASE franquicias_db;
 Edita el archivo `src/main/resources/application.properties` para incluir las credenciales:
 
 ```properties
+server.port = 8080
 spring.datasource.url=jdbc:mysql://localhost:3306/franquicias_db
-spring.datasource.username=franquicias_user
-spring.datasource.password=password
+spring.datasource.username=root
+spring.datasource.password={configurada por el usuario}
 spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
 ```
 
 ## **Cómo Ejecutar la Aplicación**
